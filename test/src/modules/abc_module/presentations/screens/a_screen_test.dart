@@ -52,7 +52,7 @@ void main() {
       expect(find.byKey(const Key('summary')), findsOneWidget);
     });
 
-    testWidgets('Should increment counter - Success case',
+    testWidgets('Should navigate to BScreen',
         (WidgetTester tester) async {
       await tester.pumpWidget(GetMaterialApp(
         initialRoute: '/a',
@@ -79,5 +79,25 @@ void main() {
 
       expect(find.text('counter: 1'), findsOneWidget);
     });
+
+    testWidgets('Should increment counter - Success case',
+            (WidgetTester tester) async {
+          await tester.pumpWidget(GetMaterialApp(
+            initialRoute: '/a',
+            initialBinding: rootBinding,
+            getPages: <GetPage>[
+              ...abcModule.routeScreen,
+            ],
+          ));
+
+          expect(find.byKey(const Key('navigateBScreen')), findsOneWidget);
+
+          await tester.tap(find.byKey(const Key('navigateBScreen')));
+
+          await tester.pumpAndSettle();
+
+          expect(Get.currentRoute, '/b');
+          expect(find.byKey(const Key('navigateBScreen')), findsNothing);
+        });
   });
 }

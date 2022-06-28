@@ -44,6 +44,7 @@ class AScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () => Get.toNamed('/b'),
+              key: const Key('navigateBScreen'),
               child: const Text('BBB'),
             ),
           ],
