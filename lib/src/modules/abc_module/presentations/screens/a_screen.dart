@@ -4,38 +4,13 @@ import 'package:get/get.dart';
 import '../../applications/controllers/counter/counter_controller.dart';
 import '../widgets/bottombar_widget.dart';
 
-// class AScreen extends StatelessWidget {
-//   const AScreen({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('A SCREEN'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           children: [
-//             const Text('AAA'),
-//             TextButton(
-//               onPressed: () => Get.toNamed('/b'),
-//               child: const Text('BBB'),
-//             ),
-//           ],
-//         ),
-//       ),
-//       bottomNavigationBar: const BottomBar(currentTabIndex: 0),
-//     );
-//   }
-// }
-
 class AScreen extends StatelessWidget {
   AScreen({Key? key}) : super(key: key);
 
   int _counter = 0;
 
   // final CountNumber _countNumber = CountNumber();
-  final _countNumber = Get.find<CountNumber>();
+  final _countNumber = Get.find<CounterImplController>();
 
   _incrementCounter() {
     print('increment');
@@ -59,10 +34,10 @@ class AScreen extends StatelessWidget {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            GetBuilder<CountNumber>(
+            GetBuilder<CounterImplController>(
               init: _countNumber, // INIT IT ONLY THE FIRST TIME
               builder: (_) => Text(
-                '${_.counter}',
+                '${_.state.summary}',
               ),
             ),
             TextButton(

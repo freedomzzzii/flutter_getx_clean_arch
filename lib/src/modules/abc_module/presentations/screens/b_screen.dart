@@ -8,8 +8,8 @@ class BScreen extends StatelessWidget {
   BScreen({Key? key}) : super(key: key);
 
   int _counter = 0;
-  // final CountNumber _countNumber = CountNumber();
-  final _countNumber = Get.find<CountNumber>();
+
+  final _countNumber = Get.find<CounterImplController>();
 
   _incrementCounter() {
     print('increment');
@@ -33,10 +33,10 @@ class BScreen extends StatelessWidget {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            GetBuilder<CountNumber>(
+            GetBuilder<CounterImplController>(
               init: _countNumber, // INIT IT ONLY THE FIRST TIME
               builder: (_) => Text(
-                '${_.counter}',
+                '${_.state.summary}',
               ),
             ),
             TextButton(

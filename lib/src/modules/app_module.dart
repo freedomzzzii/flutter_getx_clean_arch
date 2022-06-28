@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import 'abc_module/applications/controllers/counter/counter_controller.dart';
+import 'abc_module/counter_impl_usecase.dart';
 
 abstract class Module {
   final List<GetPage> routeScreen = <GetPage>[];
@@ -9,6 +10,7 @@ abstract class Module {
 class AppBinding implements Bindings {
   @override
   void dependencies() {
-    Get.put<CountNumber>(CountNumber());
+    Get.put<CounterImplController>(
+        CounterImplController(usecase: CounterImplUseCase()));
   }
 }
