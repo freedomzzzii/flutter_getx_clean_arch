@@ -33,11 +33,13 @@ class AScreen extends StatelessWidget {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+              key: const Key('counter'),
             ),
             GetBuilder<CounterImplController>(
               init: _countNumber, // INIT IT ONLY THE FIRST TIME
               builder: (_) => Text(
-                '${_.state.summary}',
+                'counter: ${_.state.summary}',
+                key: const Key('summary'),
               ),
             ),
             TextButton(
@@ -50,6 +52,7 @@ class AScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
+        key: const Key('buttonIncrement'),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: const BottomBar(currentTabIndex: 0),
